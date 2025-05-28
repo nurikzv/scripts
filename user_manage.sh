@@ -8,23 +8,16 @@
 # Bonus: Implement password expiration policies.
 
 _create_user() {
-    read -p "Enter new user name to create: " username
-    useradd $username -p passwd
-    echo "User $username created successfully - $(date)" >> /var/log/userlogs.log
-}
-
-_delete_user() {
-    read -p "Enter user name to delete: " username
-    userdel $username
-    echo "User $username deleted successfully - $(date)" >> /var/log/userlogs.log
+    read -p "Enter new user name: " username
+    useradd $username 
 }
 
 read -p "Do you want to 'create' or 'delete' user?: " input 
 
 if [ $input = "create" ]; then 
     _create_user
-elif [ $input = "delete" ]; then 
-    _delete_user  
+# elif [ $input = "delete" ]; then 
+#     # delete user
 else
     echo "Invalid option, try again"
     exit 
